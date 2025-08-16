@@ -25,26 +25,16 @@ body{
 }
 
 /* Layout */
-.container{ max-width: var(--container); margin: 0 auto; padding: 0 24px }
+.container{
+  max-width: var(--container);
+  margin: 0 auto;
+  /* ADDED: wider, responsive side margins on all devices */
+  padding: 0 clamp(18px, 5vw, 36px);
+}
 
 /* Masthead */
 .site-header{ padding-top: clamp(28px, 6vh, 64px) }
 .masthead{ text-align:center }
-
-.crest{
-  width: clamp(52px, 7vw, 76px);
-  height: auto;
-  margin-inline: auto;
-  margin-bottom: 10px;
-  display: block;
-}
-.crest-ring{ fill:none; stroke: var(--gold); stroke-width:8 }
-.crest-lines path{
-  stroke: var(--navy);
-  stroke-width:8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
 
 .masthead-title{
   font-family: "Cinzel", Georgia, serif;
@@ -79,8 +69,10 @@ body{
   letter-spacing: .28em;
 }
 
+/* CHANGED: justify the main lede paragraph */
 .lede{
-  text-align: center;
+  text-align: justify;
+  text-justify: inter-word;
   max-width: 58ch;
   margin: 0 auto 18px;
   font-size: clamp(17px, 2.2vw, 19px);
@@ -111,7 +103,12 @@ body{
   font-size: clamp(16px, 2.4vw, 20px);
   margin: 0 0 6px;
 }
-.notice-text{ margin: 0 }
+/* ADDED: justify running text in the notices */
+.notice-text{
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-word;
+}
 
 /* Small caps helper */
 .sc{ font-variant: small-caps; letter-spacing: .08em }
