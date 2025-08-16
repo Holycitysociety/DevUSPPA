@@ -28,8 +28,8 @@ body{
 .container{
   max-width: var(--container);
   margin: 0 auto;
-  /* ADDED: wider, responsive side margins on all devices */
-  padding: 0 clamp(18px, 5vw, 36px);
+  /* INCREASED gutters for mobile + responsive */
+  padding: 0 clamp(24px, 7vw, 44px);
 }
 
 /* Masthead */
@@ -69,10 +69,12 @@ body{
   letter-spacing: .28em;
 }
 
-/* CHANGED: justify the main lede paragraph */
+/* Justified running text + hyphenation to prevent edge hugging */
 .lede{
   text-align: justify;
   text-justify: inter-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   max-width: 58ch;
   margin: 0 auto 18px;
   font-size: clamp(17px, 2.2vw, 19px);
@@ -103,11 +105,12 @@ body{
   font-size: clamp(16px, 2.4vw, 20px);
   margin: 0 0 6px;
 }
-/* ADDED: justify running text in the notices */
 .notice-text{
   margin: 0;
   text-align: justify;
   text-justify: inter-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 /* Small caps helper */
@@ -180,4 +183,15 @@ body{
 /* Small polish for medium screens */
 @media (min-width: 980px){
   .masthead-title{ letter-spacing: .14em }
+}
+
+/* Extra-safe gutters on tiny phones & with notches */
+@media (max-width: 480px){
+  .container{
+    padding-left: max(28px, env(safe-area-inset-left));
+    padding-right: max(28px, env(safe-area-inset-right));
+  }
+}
+@media (max-width: 360px){
+  .container{ padding-left: 32px; padding-right: 32px; }
 }
